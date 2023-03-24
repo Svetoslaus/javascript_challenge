@@ -1,0 +1,25 @@
+function sumOfDivided(lst) {
+  let result = new Map();
+  lst.forEach(num => {
+    let factors = getPrimeFactors(num);
+    factors.forEach(factor => {
+      if (result.has(factor)) {
+        result.set(factor, result.get(factor) + num);
+      } else {
+        result.set(factor, num);
+      }
+    });
+  });
+  return Array.from(result).sort((a, b) => a[0] - b[0]);
+}
+
+function getPrimeFactors(num) {
+  let factors = [];
+  for (let i = 2; i <= num; i++) {
+    while (num % i === 0) {
+      factors.push(i);
+      num = num / i;
+    }
+  }
+  return [...new Set(factors)];
+}
