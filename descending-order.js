@@ -1,17 +1,12 @@
-import java.util.*;
+function descendingOrder(n) {
+  
+  let numString = n.toString();
+  
+  let numArray = numString.split('');
 
-public class DescendingOrder {
-  public static int sortDesc(final int num) {
-    String[] numbers = (Integer.toString(Integer.valueOf(num))).split("");
-    Arrays.sort(numbers);
-    
-    String result = "";
-    
-    for(String sum : numbers)
-    {
-      result = sum + result;
-    }
-    
-    return Integer.parseInt(result);
-  }
+  numArray.sort((a, b) => b - a);
+  
+  let result = numArray.join('');
+  
+  return Number(result);
 }
